@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "name": "SQL Test Task",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.sql": "sql"
+        },
+        "editor.defaultFormatter": "ms-mssql.sql-database-projects-vscode",
+        "sqltools.connections": [
+            {
+                "name": "PostgreSQL Test DB",
+                "driver": "PostgreSQL",
+                "server": "localhost",
+                "port": 5432,
+                "database": "test_db",
+                "username": "test_user",
+                "password": "test_pass"
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-ossdata.vscode-postgresql",
+            "mtxr.sqltools",
+            "mtxr.sqltools-driver-pg"
+        ]
+    }
+} 

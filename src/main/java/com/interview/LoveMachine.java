@@ -1,5 +1,11 @@
 package com.interview;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 public class LoveMachine {
 
     public static Love[] loves = new Love[]{
@@ -34,6 +40,47 @@ public class LoveMachine {
         System.out.println("test");
     }
 
-    record Love(String patient, String message, String doctor){};
+    public static List<LikesCount> countTop3DoctorsByLikes(List<Love> likes) {
+        return LoveMachine.countTop3ByProvidedKey(likes, Love::doctor);
+    }
+
+    public static List<LikesCount> countTop3PatientsByLikes(List<Love> likes) {
+        return LoveMachine.countTop3ByProvidedKey(likes, Love::patient);
+    }
+
+    private static List<LikesCount> countTop3ByProvidedKey(List<Love> likes, Function<Love, String> groupingByKeyExtractor) {
+        Map<String, Long> likesCount = likes.stream()
+                .collect(Collectors.groupingBy(groupingByKeyExtractor, Collectors.counting()));
+
+        List<LikesCount> top3likeCount = likesCount.entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .limit(3)
+                .map(e -> new LikesCount(e.getKey(), e.getValue().intValue()))
+                .toList();
+
+        return top3likeCount;
+    }
+
+    /** Deduplicates provided likes list by unique combination of Patient + Doctor */
+    public static List<Love> deduplicatePatientToDoctorLikes(List<Love> likes) {
+
+        Function<Love, String> patientPlusDoctorKeyExtractor = love -> love.patient + "_" + love.doctor;
+
+        return new ArrayList<>(
+                likes.stream()
+                        .collect(
+                                Collectors.toMap(
+                                        patientPlusDoctorKeyExtractor,
+                                        Function.identity(),
+                                        (love1, love2) -> love1) // merge function that is invoked on conflicts
+                        )
+                        .values()
+        );
+    }
+
+    public record Love(String patient, String message, String doctor){}
+
+    public record LikesCount(String key, Integer likesCount){}
+
 }
 

@@ -5,7 +5,7 @@ plugins {
 
 group = 'com.interview'
 version = '1.0.0'
-sourceCompatibility = '17'
+sourceCompatibility = '21'
 
 repositories {
     mavenCentral()
@@ -16,10 +16,25 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.7.1'
     
     // Testing dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.4'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.13.4'
+    testImplementation 'org.assertj:assertj-core:3.27.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     
     // Optional: Logging
     implementation 'ch.qos.logback:logback-classic:1.4.14'
     implementation 'org.slf4j:slf4j-api:2.0.9'
+}
+
+test {
+    // Enable JUnit 5 (Gradle 4.6+).
+    useJUnitPlatform()
+
+    // Always run tests, even when nothing changed.
+    dependsOn 'cleanTest'
+
+    // Show test results.
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }

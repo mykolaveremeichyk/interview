@@ -41,6 +41,14 @@ CREATE TABLE order_items (
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
+-- Loves table
+CREATE TABLE loves (
+    love_id SERIAL PRIMARY KEY,
+    patient VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    doctor VARCHAR(100) NOT NULL
+);
+
 -- Insert test data
 
 -- Test customers (50+ records)
@@ -292,6 +300,81 @@ INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES
 (25, 43, 1, 100.00), (26, 15, 1, 79.99), (27, 54, 1, 89.99),
 (28, 55, 1, 69.99), (29, 56, 1, 79.99), (30, 57, 1, 154.99);
 
+-- Test loves data (72 records from CSV)
+INSERT INTO loves (patient, message, doctor) VALUES
+('arebenti@icloud.com', 'The best doctor', 'nogin@att.net'),
+('arebenti@icloud.com1', 'The best doctor', 'nogin@att.net'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('nighthawk@gmail.com', 'Appreciate your help', 'curly@yahoo.com'),
+('jigsaw@comcast.net', 'Great job. Thank you.', 'liedra@yahoo.com'),
+('arebenti@icloud.com', 'The best doctor', 'nogin@att.net'),
+('metzzo@aol.com', 'Thanks)', 'doormat@icloud.com'),
+('violinhi@msn.com', 'I will reccomend you for my friends.', 'chance@gmail.com'),
+('mccurley@sbcglobal.net', 'Cool doctor', 'lishoy@live.com'),
+('drjlaw@verizon.net', 'High professional.', 'graham@me.com'),
+('drjlaw@verizon.net', 'High professional.', 'graham@me.com'),
+('drjlaw@verizon.net', 'High professional 111.', 'graham@me.com'),
+('metzzo@aol.com', 'Thanks)', 'doormat@icloud.com'),
+('jdhildeb@msn.com', 'Thank you.', 'brbarret@gmail.com'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('mccurley@sbcglobal.net', 'Nice communication!!', 'euice@yahoo.com'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('mccurley@sbcglobal.net', 'Nice communication!!', 'euice@yahoo.com'),
+('shazow@icloud.com', 'The best doctor 1', 'alhajj@sbcglobal.net'),
+('shazow@icloud.com', 'The best doctor 2', 'alhajj@sbcglobal.net'),
+('shazow@icloud.com', 'The best doctor 3', 'alhajj@sbcglobal.net'),
+('drjlaw@verizon.net', 'Thank you for your help.', 'brbarret@gmail.com'),
+('arebenti@icloud1.com', 'The best doctor1', 'euice@yahoo.com'),
+('arebenti@icloud2.com', 'The best doctor2', 'euice@yahoo.com'),
+('arebenti@icloud.com', 'The best doctor', 'nogin@att.net'),
+('arebenti@icloud.com1', 'The best doctor', 'nogin@att.net'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('nighthawk@gmail.com', 'Appreciate your help', 'curly@yahoo.com'),
+('jigsaw@comcast.net', 'Great job. Thank you.', 'liedra@yahoo.com'),
+('arebenti@icloud.com', 'The best doctor', 'nogin@att.net'),
+('metzzo@aol.com', 'Thanks)', 'doormat@icloud.com'),
+('violinhi@msn.com', 'I will reccomend you for my friends.', 'chance@gmail.com'),
+('mccurley@sbcglobal.net', 'Cool doctor', 'lishoy@live.com'),
+('drjlaw@verizon.net', 'High professional.', 'graham@me.com'),
+('drjlaw@verizon.net', 'High professional.', 'graham@me.com'),
+('drjlaw@verizon.net', 'High professional 111.', 'graham@me.com'),
+('metzzo@aol.com', 'Thanks)', 'doormat@icloud.com'),
+('jdhildeb@msn.com', 'Thank you.', 'brbarret@gmail.com'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('mccurley@sbcglobal.net', 'Nice communication!!', 'euice@yahoo.com'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('mccurley@sbcglobal.net', 'Nice communication!!', 'euice@yahoo.com'),
+('shazow@icloud.com', 'The best doctor 1', 'alhajj@sbcglobal.net'),
+('shazow@icloud.com', 'The best doctor 2', 'alhajj@sbcglobal.net'),
+('shazow@icloud.com', 'The best doctor 3', 'alhajj@sbcglobal.net'),
+('drjlaw@verizon.net', 'Thank you for your help.', 'brbarret@gmail.com'),
+('arebenti@icloud1.com', 'The best doctor1', 'euice@yahoo.com'),
+('arebenti@icloud2.com', 'The best doctor2', 'euice@yahoo.com'),
+('arebenti@icloud.com', 'The best doctor', 'nogin@att.net'),
+('arebenti@icloud.com1', 'The best doctor', 'nogin@att.net'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('nighthawk@gmail.com', 'Appreciate your help', 'curly@yahoo.com'),
+('jigsaw@comcast.net', 'Great job. Thank you.', 'liedra@yahoo.com'),
+('arebenti@icloud.com', 'The best doctor', 'nogin@att.net'),
+('metzzo@aol.com', 'Thanks)', 'doormat@icloud.com'),
+('violinhi@msn.com', 'I will reccomend you for my friends.', 'chance@gmail.com'),
+('mccurley@sbcglobal.net', 'Cool doctor', 'lishoy@live.com'),
+('drjlaw@verizon.net', 'High professional.', 'graham@me.com'),
+('drjlaw@verizon.net', 'High professional.', 'graham@me.com'),
+('drjlaw@verizon.net', 'High professional 111.', 'graham@me.com'),
+('metzzo@aol.com', 'Thanks)', 'doormat@icloud.com'),
+('jdhildeb@msn.com', 'Thank you.', 'brbarret@gmail.com'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('mccurley@sbcglobal.net', 'Nice communication!!', 'euice@yahoo.com'),
+('heine@yahoo.com', 'Nice communication!!', 'euice@yahoo.com'),
+('mccurley@sbcglobal.net', 'Nice communication!!', 'euice@yahoo.com'),
+('shazow@icloud.com', 'The best doctor 1', 'alhajj@sbcglobal.net'),
+('shazow@icloud.com', 'The best doctor 2', 'alhajj@sbcglobal.net'),
+('shazow@icloud.com', 'The best doctor 3', 'alhajj@sbcglobal.net'),
+('drjlaw@verizon.net', 'Thank you for your help.', 'brbarret@gmail.com'),
+('arebenti@icloud1.com', 'The best doctor1', 'euice@yahoo.com'),
+('arebenti@icloud2.com', 'The best doctor2', 'euice@yahoo.com');
+
 -- Create indexes for query optimization
 CREATE INDEX idx_orders_customer_id ON orders(customer_id);
 CREATE INDEX idx_order_items_order_id ON order_items(order_id);
@@ -299,4 +382,6 @@ CREATE INDEX idx_order_items_product_id ON order_items(product_id);
 CREATE INDEX idx_customers_email ON customers(email);
 CREATE INDEX idx_products_category ON products(category);
 CREATE INDEX idx_orders_status ON orders(status);
-CREATE INDEX idx_orders_date ON orders(order_date); 
+CREATE INDEX idx_orders_date ON orders(order_date);
+CREATE INDEX idx_loves_patient ON loves(patient);
+CREATE INDEX idx_loves_doctor ON loves(doctor); 

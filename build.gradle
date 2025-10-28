@@ -7,6 +7,10 @@ group = 'com.interview'
 version = '1.0.0'
 sourceCompatibility = '17'
 
+application {
+    mainClass = 'com.interview.LoveMachine'
+}
+
 repositories {
     mavenCentral()
 }
